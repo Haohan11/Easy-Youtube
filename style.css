@@ -1,0 +1,112 @@
+
+:root {
+    --searchbox-color: hsla(0, 0%, 55%, 0.42);
+    --searchbox-hover-color: hsla(0, 0%, 75%, 0.42);
+    --page-manager-margin: 0px;
+}
+
+/*search-box style start*/
+#container.ytd-searchbox,
+#search-icon-legacy.ytd-searchbox {
+    background-color: hsla(0, 0%, 100%, 0.18) !important;
+    border: none !important;
+    backdrop-filter: blur(15px);
+}
+
+#container.ytd-searchbox {
+    border-radius: 25px 0 0 25px !important;
+    transition: 500ms;
+}
+
+#search-icon-legacy.ytd-searchbox {
+    border-radius: 0 25px 25px 0 !important;
+}
+
+#container.ytd-searchbox > [slot=search-input] {
+    text-indent: 12px;
+}
+
+ytd-searchbox[has-focus] #container.ytd-searchbox {
+    background-color: hsla(0, 0%, 17%, 0.75) !important;
+    box-shadow: none !important;
+    /* box-sizing: border-box !important; */
+}
+
+#container.ytd-searchbox:hover:not(ytd-searchbox[has-focus] #container.ytd-searchbox) {
+    transition: 0ms;
+}
+
+#container.ytd-searchbox:hover,
+#search-icon-legacy.ytd-searchbox:hover {
+    background-color: var(--searchbox-hover-color) !important;
+}    
+/*search-box style end*/
+
+#voice-search-button.ytd-masthead,
+#buttons.ytd-masthead .ytd-masthead[is-icon-button],
+yt-icon-button.ytd-notification-topbar-button-renderer {
+    display: none;
+}
+
+ytd-feed-filter-chip-bar-renderer,
+ytd-mini-guide-renderer {
+    display: none !important;
+}
+
+ytd-app[mini-guide-visible] ytd-page-manager.ytd-app {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+ytd-masthead#masthead {
+    background: 
+    linear-gradient(hsl(0, 0%, 13%), 
+                    hsla(0, 0%, 13%, 0.9), 
+                    hsla(0, 0%, 13%, 0.7), 
+                    hsla(0, 0%, 13%, 0.4),
+                     transparent);
+}
+    
+#search-input.ytd-searchbox-spt input::placeholder {
+    color: #ffffffdd !important;
+}
+
+ytd-thumbnail.ytd-rich-grid-media:before,
+ytd-thumbnail #thumbnail.ytd-thumbnail,
+img.yt-img-shadow {
+    border-radius: 10px;
+}
+
+/* ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered], */
+ytd-thumbnail-overlay-toggle-button-renderer,
+.ytd-thumbnail[top-right-overlay]~.ytd-thumbnail[top-right-overlay]{
+    display: none !important;
+}
+
+ytd-thumbnail-overlay-time-status-renderer {
+    border-radius: 5px !important;
+    background-color: hsla(0deg, 0%, 13%, 0.6) !important;
+    backdrop-filter: blur(50px) !important;
+    margin: 0 10px 8px 0 !important;
+    padding: 3.5px 6px !important;
+}
+
+#contentContainer.tp-yt-app-drawer,
+tp-yt-app-drawer#guide {
+    transition-duration: 300ms !important;
+}
+
+#guide-content.ytd-app {
+    background: hsla(0, 0%, 100%, 0.08) !important;
+    backdrop-filter: blur(100px) !important;
+}
+
+#contentContainer.tp-yt-app-drawer {
+    background: transparent !important;
+}
+
+/* test shadow dom style*/
+#search-container.ytd-searchbox-spt.sbfcn:host(span){
+    background: red;
+    color: black;
+}

@@ -1,0 +1,38 @@
+{
+    "name": "Easy Youtube",
+    "description": "Turn Youtube Shorts into a regular video.",
+    "version": "0.1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["tabs", "scripting"],
+    "host_permissions": ["https://*.youtube.com/*"],
+    "content_scripts": [
+        {
+            "matches": ["https://*.youtube.com/*"],
+            "js": ["contentScript.js"],
+            "css": ["style.css"]
+        }
+    ],
+    "commands": {
+        "go-homePage": {
+            "suggested_key": {
+                "default": "Ctrl+Home"
+            },
+            "description": "Go to Youtube home page."
+        },
+        "toggle-setting-button": {
+            "suggested_key": {
+                "default": "Alt+S"
+            },
+            "description": "Open Youtube player setting."
+        },
+        "toggle-sideBar": {
+            "suggested_key": {
+                "default": "Ctrl+B"
+            },
+            "description": "Toggle side bar."
+        }
+    }
+}
