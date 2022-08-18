@@ -18,7 +18,7 @@
     "commands": {
         "go-homePage": {
             "suggested_key": {
-                "default": "Ctrl+Home"
+                "default": "Alt+Y"
             },
             "description": "Go to Youtube home page."
         },

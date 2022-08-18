@@ -11,7 +11,7 @@ async function InYoutube() {
     { result: true, tab: currentTab } : { result: false }
 }
 
-const onUpdatedListener = {
+/*const onUpdatedListener = {
     'removeShorts': async () => {
         const { result, tab } = await InYoutube()
         result && tab.url.includes("youtube.com/shorts/") &&
@@ -24,23 +24,28 @@ const onUpdatedListener = {
         chrome.tabs.sendMessage(tab.id, { type: 'add-margin' })
 
     }
-}
+}*/
 
 chrome.commands.onCommand.addListener( async command => {
     const { result, tab } = await InYoutube()
     result && chrome.tabs.sendMessage(tab.id, { type: 'command', command })
 } )
 
-{
+chrome.tabs.onUpdated.addListener( async () => {
+    const { result, tab } = await InYoutube()
+    result && chrome.scripting.executeScript(
+        {
+            target: { tabId: tab.id },
+            files: ['handleUpdated.js']
+        }
+    )
+    // result && chrome.tabs.sendMessage(tab.id, { type: 'tab-updated' })
+} )
+
+/*{
     const keys = Object.keys(onUpdatedListener)
     keys.map( key => {
         const listener = onUpdatedListener[key]
         chrome.tabs.onUpdated.addListener(listener)
     } )
-}
-
-//ytd-page-manager#page-manager
-
-//#contentContainer.tp-yt-app-drawer
-
-//tp-yt-app-drawer#guide
+}*/
