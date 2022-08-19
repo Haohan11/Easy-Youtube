@@ -11,24 +11,10 @@ async function InYoutube() {
     { result: true, tab: currentTab } : { result: false }
 }
 
-/*const onUpdatedListener = {
-    'removeShorts': async () => {
-        const { result, tab } = await InYoutube()
-        result && tab.url.includes("youtube.com/shorts/") &&
-        chrome.tabs.sendMessage(tab.id, { type: 'remove-shorts' })
-    },
-    'adjustMargin': async () => {
-        const { result, tab } = await InYoutube()
-        result && tab.url === 'https://www.youtube.com/' ?
-        chrome.tabs.sendMessage(tab.id, { type: 'remove-margin' }) : 
-        chrome.tabs.sendMessage(tab.id, { type: 'add-margin' })
-
-    }
-}*/
-
 chrome.commands.onCommand.addListener( async command => {
     const { result, tab } = await InYoutube()
-    result && chrome.tabs.sendMessage(tab.id, { type: 'command', command })
+    result && tab.status === 'complete' && 
+    chrome.tabs.sendMessage(tab.id, { type: 'command', command })
 } )
 
 chrome.tabs.onUpdated.addListener( async () => {
@@ -41,11 +27,3 @@ chrome.tabs.onUpdated.addListener( async () => {
     )
     // result && chrome.tabs.sendMessage(tab.id, { type: 'tab-updated' })
 } )
-
-/*{
-    const keys = Object.keys(onUpdatedListener)
-    keys.map( key => {
-        const listener = onUpdatedListener[key]
-        chrome.tabs.onUpdated.addListener(listener)
-    } )
-}*/

@@ -41,24 +41,9 @@
 
     const messageGate = {
         'command': message => commandGate[message[message.type]](),
-        'tab-updated': () => {
-            console.log('message receive')
-            HandleUpdated()
-        }
-    }
-
-    function HandleUpdated() {
-        const URL = document.URL
-        
-        URL.includes('/shorts/') && RemoveShorts(URL)
-    }
-
-    function RemoveShorts(url) {
-        const newUrl = url.split('shorts/')[0] + 'watch?v=' + url.split('shorts/')[1]
-        window.location.replace(newUrl)
     }
     
     chrome.runtime.onMessage.addListener( message => messageGate[message.type](message) )
-
-    window.addEventListener('load', commandGate['toggle-sideBar'](), { once: true })
+    
+    // window.addEventListener('load', commandGate['toggle-sideBar'](), { once: true })
 })()

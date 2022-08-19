@@ -104,9 +104,3 @@ tp-yt-app-drawer#guide {
 #contentContainer.tp-yt-app-drawer {
     background: transparent !important;
 }
-
-/* test shadow dom style*/
-#search-container.ytd-searchbox-spt.sbfcn:host(span){
-    background: red;
-    color: black;
-}
