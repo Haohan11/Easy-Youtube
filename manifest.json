@@ -33,6 +33,12 @@
                 "default": "Ctrl+B"
             },
             "description": "Toggle side bar."
+        },
+        "video-repeat": {
+            "suggested_key": {
+                "default": "Alt+L"
+            },
+            "description": "Toggle repeat video."
         }
     }
 }

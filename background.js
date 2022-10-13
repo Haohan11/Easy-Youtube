@@ -5,25 +5,24 @@ async function getCurrentTab() {
     return tab;
 }
 
-async function InYoutube() {
+async function inYoutube() {
     const currentTab = await getCurrentTab()
-    return currentTab?.url && currentTab.url.includes("youtube.com") ?
+    return currentTab?.url && currentTab.url.includes("https://www.youtube.com") ?
     { result: true, tab: currentTab } : { result: false }
 }
 
 chrome.commands.onCommand.addListener( async command => {
-    const { result, tab } = await InYoutube()
+    const { result, tab } = await inYoutube()
     result && tab.status === 'complete' && 
     chrome.tabs.sendMessage(tab.id, { type: 'command', command })
 } )
 
 chrome.tabs.onUpdated.addListener( async () => {
-    const { result, tab } = await InYoutube()
+    const { result, tab } = await inYoutube()
     result && chrome.scripting.executeScript(
         {
             target: { tabId: tab.id },
             files: ['handleUpdated.js']
         }
     )
-    // result && chrome.tabs.sendMessage(tab.id, { type: 'tab-updated' })
 } )

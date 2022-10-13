@@ -1,8 +1,11 @@
 
 :root {
-    --searchbox-color: hsla(0, 0%, 55%, 0.42);
     --searchbox-hover-color: hsla(0, 0%, 75%, 0.42);
-    --page-manager-margin: 0px;
+    --topbar-color: linear-gradient(hsl(0, 0%, 13%), 
+                                    hsla(0, 0%, 13%, 0.9), 
+                                    hsla(0, 0%, 13%, 0.7), 
+                                    hsla(0, 0%, 13%, 0.4),
+                                      transparent);
 }
 
 /*search-box style start*/
@@ -29,7 +32,6 @@
 ytd-searchbox[has-focus] #container.ytd-searchbox {
     background-color: hsla(0, 0%, 17%, 0.75) !important;
     box-shadow: none !important;
-    /* box-sizing: border-box !important; */
 }
 
 #container.ytd-searchbox:hover:not(ytd-searchbox[has-focus] #container.ytd-searchbox) {
@@ -59,12 +61,7 @@ ytd-app[mini-guide-visible] ytd-page-manager.ytd-app {
 }
 
 ytd-masthead#masthead {
-    background: 
-    linear-gradient(hsl(0, 0%, 13%), 
-                    hsla(0, 0%, 13%, 0.9), 
-                    hsla(0, 0%, 13%, 0.7), 
-                    hsla(0, 0%, 13%, 0.4),
-                     transparent);
+    background: var(--topbar-color)
 }
     
 #search-input.ytd-searchbox-spt input::placeholder {
@@ -77,7 +74,6 @@ img.yt-img-shadow {
     border-radius: 10px;
 }
 
-/* ytd-thumbnail-overlay-toggle-button-renderer[use-expandable-tooltip][hovered], */
 ytd-thumbnail-overlay-toggle-button-renderer,
 .ytd-thumbnail[top-right-overlay]~.ytd-thumbnail[top-right-overlay]{
     display: none !important;
@@ -103,4 +99,84 @@ tp-yt-app-drawer#guide {
 
 #contentContainer.tp-yt-app-drawer {
     background: transparent !important;
+}
+
+.ytp-swatch-background-color {
+    background: linear-gradient(90deg, rgb(255, 0, 0),
+                                     rgb(255, 164, 0), 
+                                     rgb(255, 237, 64), 
+                                     rgb(104, 228, 53), 
+                                     rgb(3, 169, 244), 
+                                     rgb(149, 59, 255));
+}
+
+.ytp-play-progress.ytp-swatch-background-color {
+    background-color: transparent;
+}
+
+.ytp-scrubber-button.ytp-swatch-background-color {
+    background: radial-gradient(circle at 50% 50%,
+                                rgba(255, 255, 255, 1) 90%,
+                                rgba(255, 255, 255, 0.1) 95%);
+}
+
+.ytp-scrubber-button.ytp-swatch-background-color:after {
+    content: '';
+    position: absolute;
+    top: -25%;
+    left: -25%;
+    width: 150%;
+    height: 150%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: -1;
+}
+
+#progress.yt-page-navigation-progress {
+    background-color: transparent;
+    background: linear-gradient(90deg, rgb(255, 0, 0),
+                                    rgb(255, 164, 0), 
+                                    rgb(255, 237, 64), 
+                                    rgb(104, 228, 53), 
+                                    rgb(3, 169, 244), 
+                                    rgb(149, 59, 255));
+}
+
+#progress.ytd-thumbnail-overlay-resume-playback-renderer {
+    background: linear-gradient(90deg, rgb(255, 0, 0),
+                                    rgb(255, 164, 0), 
+                                    rgb(255, 237, 64), 
+                                    rgb(104, 228, 53), 
+                                    rgb(3, 169, 244), 
+                                    rgb(149, 59, 255));
+}
+
+/**/
+.sbsb_a {
+    background: hsla(0, 0%, 17%, 0.85) !important;
+    backdrop-filter: blur(15px) !important;
+    padding: 6px 4px !important;
+}
+
+.sbdd_b {
+    background: transparent !important;
+    border: none !important;
+}
+
+.sbpqs_a {
+    color: white !important;
+}
+
+.sbsb_i {
+    color: hsl(220deg 100% 80%) !important;
+}
+
+.sbsb_d {
+    background: hsla(0, 0%, 75%, 0.32) !important;
+}
+
+.sbpqs_a:before {
+    background: #ffffffdd !important;
+    border-radius: 50% !important;
+    background-image: url("data:image/svg+xml;base64, PHN2ZyBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMi40NzUgMTQuMTI1M0w4LjMzMzMgMTEuNTU4N1Y1LjgzMzY2SDkuOTk5OTdWMTAuNjMzN0wxMy4zNTgzIDEyLjcwODdMMTIuNDc1IDE0LjEyNTNaTTE4LjMzMzMgMTAuMDAwM0MxOC4zMzMzIDE0LjU5MiAxNC41OTE2IDE4LjMzMzcgOS45OTk5NyAxOC4zMzM3QzUuNDA4MyAxOC4zMzM3IDEuNjY2NjMgMTQuNTkyIDEuNjY2NjMgMTAuMDAwM0gyLjQ5OTk3QzIuNDk5OTcgMTQuMTMzNyA1Ljg2NjYzIDE3LjUwMDMgOS45OTk5NyAxNy41MDAzQzE0LjEzMzMgMTcuNTAwMyAxNy41IDE0LjEzMzcgMTcuNSAxMC4wMDAzQzE3LjUgNS44NjY5OSAxNC4xMzMzIDIuNTAwMzMgOS45OTk5NyAyLjUwMDMzQzcuMzQxNjMgMi41MDAzMyA0LjkzMzMgMy44NjY5OSAzLjU2NjYzIDYuMTUwMzNDMy40NzQ5NyA2LjMwMDMzIDMuMzgzMyA2LjQ1ODY2IDMuMzA4MyA2LjYxNjk5QzMuMjk5OTcgNi42MzM2NiAzLjI5MTYzIDYuNjUwMzMgMy4yODMzIDYuNjY2OTlINi42NjY2M1Y3LjUwMDMzSDEuNjMzM1YyLjUwMDMzSDIuNDY2NjNWNi40NTAzM0MyLjQ5OTk3IDYuMzc1MzMgMi41MjQ5NyA2LjMwODY2IDIuNTU4MyA2LjI0MTk5QzIuNjQ5OTcgNi4wNTg2NiAyLjc0OTk3IDUuODkxOTkgMi44NDk5NyA1LjcxNjk5QzQuMzQ5OTcgMy4yMTY5OSA3LjA5MTYzIDEuNjY2OTkgOS45OTk5NyAxLjY2Njk5QzE0LjU5MTYgMS42NjY5OSAxOC4zMzMzIDUuNDA4NjYgMTguMzMzMyAxMC4wMDAzWiIgZmlsbD0iIzAzMDMwMyIvPjwvc3ZnPg==") !important;
 }
